@@ -1,0 +1,14 @@
+.cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.search {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px;
+    margin-top: 20px;
+}
