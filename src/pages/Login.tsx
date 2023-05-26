@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../assets/img/logo.png";
+import scritta from "../assets/img/scritta.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -24,9 +25,10 @@ export default function Login() {
 
     return (
         <div className="h-screen w-screen flex flex-col items-center justify-center">
-            <div className="flex flex-col w-min items-center">
-                <img className="h-[200px] w-[200px]" src={logo} alt="logo" />
-                <form className="flex flex-col w-[300px]">
+            <div className="flex flex-col w-screen items-center">
+                <img className="h-[130px] mb-3" src={logo} alt="logo" />
+                <img className="w-[500px] mb-3" src={scritta} alt="logo" />
+                <form className="flex flex-col w-[300px] mb-[70px]">
                     <label className="text-xl">Username</label>
                     <input
                         defaultValue={username}
