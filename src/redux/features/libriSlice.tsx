@@ -3,6 +3,12 @@ import axios from "axios";
 
 const LIBRI_API_URL = "http://localhost:3456/libro";
 
+interface LibriState {
+    libri: any[],
+    status: string,
+    error: string,
+}
+
 const intialState = {
     libri: [],
     status: "idle", //'idle' | 'loading' | 'succeeded' | 'failed'
@@ -12,11 +18,10 @@ const intialState = {
 export const fetchLibri = createAsyncThunk("libri/fetchLibri", async () => {
     const config = {
         headers: {
-            "x-access-token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaW5jbyI6InBhbGxpbm8iLCJpYXQiOjE2ODQyNjU2NTIsImV4cCI6MTY4NDM1MjA1Mn0.DjfI8_Z13NuWoHmZQ6LWODvrrCjezhDzG8p6g-FHNm4"
+            "x-access-token" : localStorage.getItem("token")
         }
     }
     const response = await axios.get(LIBRI_API_URL + "/lista",config);
-    console.log(response.data);
     return response.data;
 });
 
@@ -31,7 +36,7 @@ const libriSlice = createSlice({
         })
         .addCase(fetchLibri.fulfilled, (state, action) => {
             state.status = "succeeded";
-            state.libri = state.libri.concat(action.payload);
+            state.libri = state.libri.concat(action.payload.data.libri);
         })
         .addCase(fetchLibri.rejected, (state, action) => {
             state.status = "failed";
@@ -41,7 +46,9 @@ const libriSlice = createSlice({
 })
 
 export const selectAllLibri = (state : any) => state.libri.libri;
-export const selectLibriById = (state : any, libriId : string) => state.libri.libri.find((libri : any) => libri.id === libriId);
+export const selectLibLriById = ((state : any, libriId : string) => {
+    return state.libri.libri.find((libri : any) => libri._id === libriId
+)});
 export const selectLibriStatus = (state : any) => state.libri.status;
 export const selectLibriError = (state : any) => state.libri.error;
 

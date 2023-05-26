@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "./bookList.component.css"
 
@@ -11,27 +12,30 @@ interface LibriListInterface {
 export default function BookList({ libri, stato }: LibriListInterface) {
 
 
-    let content
+    let content = [];
 
     if (stato === "loading") {
-        content = <div className="lds-dual-ring"></div>
+        content.push(<div key="loading" className="lds-dual-ring"></div>)
     }
     else if (stato === "failed") {
-        content = <div>error</div>
+        content.push(<div key="error" >error</div>)
     }
     else if (stato === "succeeded") {
-        content = libri.map((libri: any) => (
-            <div className="card" key={libri._id}>
-                <div className="mr-2">
-                    <img src="https://via.placeholder.com/150" alt="book cover" />
-                </div>
-                <div>
-                    <h3>{libri.titolo}</h3>
-                    <p>{libri.autore}</p>
-                </div>
-            </div>
+        libri.map((libri: any) => (
+            content.push(
+                <Link key={libri._id} className="card" to={`/libro/${libri._id}`} >
+                    <div className="mr-2">
+                        <img src="https://via.placeholder.com/150" alt="book cover" />
+                    </div>
+                    <div>
+                        <h3>{libri.titolo}</h3>
+                        <p>{libri.autore}</p>
+                    </div>
+                </Link>
+            )
         ))
     }
+
 
 
     return (

@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './pages/Home';
 import Layout from './pages/Layout';
 import Library from './pages/Library';
+import Libro from './pages/Libro';
 
 import Login from './pages/Login';
 
@@ -26,6 +27,7 @@ root.render(
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/library" element={<Library />} />
+          <Route path="/libro/:id" element={<Libro />} />
         </Route>
       </Routes>
     </BrowserRouter>
