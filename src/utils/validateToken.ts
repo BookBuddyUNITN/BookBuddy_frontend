@@ -1,8 +1,10 @@
 import axios from 'axios';
+import conf from "../assets/config/general.json";
+
 
 export async function validateToken(token: string) {
   try {
-    const res = await axios.get('http://localhost:3456/auth/validatoken?token='+token)
+    const res = await axios.get(conf.BASE_URL + 'auth/validatoken?token='+token)
     return res.data.success
   } catch (error) {
     return false

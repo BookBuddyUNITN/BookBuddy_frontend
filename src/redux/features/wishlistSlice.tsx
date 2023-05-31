@@ -1,7 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import conf from "../../assets/config/general.json";
 
-const LIBRI_API_URL = "http://localhost:3456/wishlist";
+
+const LIBRI_API_URL = conf.BASE_URL + "wishlist";
 
 const intialState = {
     libri: [],

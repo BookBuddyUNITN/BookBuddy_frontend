@@ -3,20 +3,24 @@ import logo from "../assets/img/logo.png";
 import scritta from "../assets/img/scritta.png";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import conf from "../assets/config/general.json";
+
 
 async function login(username: string, password: string) {
     try {
-        const res = await axios.post("http://localhost:3456/auth/login", {
+        const res = await axios.post(conf.BASE_URL + "auth/login", {
             username: username,
             password: password
         });
         return res.data;
     } catch (error) {
+        console.log(error);
         return false;
     } 
 }
 
 export default function Login() {
+
 
     const [username, setUsername] = React.useState<string>("");
     const [password, setPassword] = React.useState<string>("");
