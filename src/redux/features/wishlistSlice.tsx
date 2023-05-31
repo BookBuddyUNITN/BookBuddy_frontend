@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const LIBRI_API_URL = "http://localhost:3456/libro";
+const LIBRI_API_URL = "http://localhost:3456/wishlist";
 
 const intialState = {
     libri: [],
@@ -15,11 +15,11 @@ export const fetchLibri = createAsyncThunk("libri/fetchLibri", async () => {
             "x-access-token" : localStorage.getItem("token")
         }
     }
-    const response = await axios.get(LIBRI_API_URL + "/lista",config);
+    const response = await axios.get(LIBRI_API_URL + "/list",config);
     return response.data;
 });
 
-const libriSlice = createSlice({
+const wishlistSlice = createSlice({
     name: "libri",
     initialState: intialState,
     reducers: {},
@@ -46,7 +46,7 @@ export const selectLibLriById = ((state : any, libriId : string) => {
 export const selectLibriStatus = (state : any) => state.libri.status;
 export const selectLibriError = (state : any) => state.libri.error;
 
-export default libriSlice.reducer;
+export default wishlistSlice.reducer;
 
 
 

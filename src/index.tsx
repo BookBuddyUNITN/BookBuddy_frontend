@@ -7,6 +7,8 @@ import Home from './pages/Home';
 import Layout from './pages/Layout';
 import Library from './pages/Library';
 import Libro from './pages/Libro';
+import Wishlist from './pages/Wishlist';
+import AddLibro from './pages/AddLibro';
 
 import Login from './pages/Login';
 
@@ -28,6 +30,10 @@ root.render(
           <Route path="/" element={<Home />} />
           <Route path="/library" element={<Library />} />
           <Route path="/libro/:id" element={<Libro />} />
+
+          <Route path="/wishlist" element={<Wishlist/>} />
+          <Route path="/TEST" element={<AddLibro/>} />
+
         </Route>
       </Routes>
     </BrowserRouter>

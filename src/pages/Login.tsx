@@ -27,7 +27,7 @@ export default function Login() {
         <div className="h-screen w-screen flex flex-col items-center justify-center">
             <div className="flex flex-col w-screen items-center">
                 <img className="h-[130px] mb-3" src={logo} alt="logo" />
-                <img className="w-[500px] mb-3" src={scritta} alt="logo" />
+                <img className="w-[70%] mb-3" src={scritta} alt="logo" />
                 <form className="flex flex-col w-[300px] mb-[70px]">
                     <label className="text-xl">Username</label>
                     <input

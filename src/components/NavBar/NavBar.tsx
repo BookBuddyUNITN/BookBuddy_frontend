@@ -11,10 +11,10 @@ export default function NavBar() {
                 <Link to="/library">Library</Link>
             </div>
             <div className="text-2xl font-bold">
-                <Link to="/library">Library</Link>
+                <Link to="/wishlist">Wishlist</Link>
             </div>
             <div className="text-2xl font-bold">
-                <Link to="/library">Library</Link>
+                <Link to="/TEST">TEST</Link>
             </div>
         </div>
     )

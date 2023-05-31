@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "./bookList.component.css"
-
 interface LibriListInterface {
     libri: any[],
     stato: string
