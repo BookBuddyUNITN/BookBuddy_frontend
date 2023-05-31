@@ -5,7 +5,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from './pages/Home';
 import Layout from './pages/Layout';
-import Library from './pages/Library';
 import Libro from './pages/Libro';
 import Wishlist from './pages/Wishlist';
 import AddLibro from './pages/AddLibro';
@@ -15,6 +14,7 @@ import Login from './pages/Login';
 import { Provider } from 'react-redux';
 
 import store from './redux/store';
+import LibreriaPersonale from './pages/LibreriaPersonale';
 
 
 const root = ReactDOM.createRoot(
@@ -28,7 +28,7 @@ root.render(
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/library" element={<Library />} />
+          <Route path="/libreriapersonale" element={<LibreriaPersonale />} />
           <Route path="/libro/:id" element={<Libro />} />
 
           <Route path="/wishlist" element={<Wishlist/>} />

@@ -20,8 +20,8 @@ interface result {
 export default function AddLibro() {
     const [scanResult, setScanResult] = useState<string | null>(null);
 
-    const onNewScanResult = (decodedText : string, decodedResult : result) => {
-        if(decodedResult.result.format.formatName = "EAN_13") {
+    const onNewScanResult = (decodedText: string, decodedResult: result) => {
+        if (decodedResult.result.format.formatName = "EAN_13") {
             setScanResult(decodedResult.result.text);
         }
     };
@@ -33,7 +33,7 @@ export default function AddLibro() {
             <h1>Scanner</h1>
             <Html5QrcodePlugin
                 fps={10}
-                qrbox={500}
+                qrbox={280}
                 disableFlip={false}
                 qrCodeSuccessCallback={onNewScanResult}
             />

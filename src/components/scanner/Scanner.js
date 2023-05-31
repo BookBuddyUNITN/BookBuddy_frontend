@@ -50,7 +50,7 @@ const Html5QrcodePlugin = (props) => {
     }, []);
 
     return (
-        <div className="w-[70%] h-[70%]"
+        <div className="w-[70%]"
             id={qrcodeRegionId}
         />
     );
