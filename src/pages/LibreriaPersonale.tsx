@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { selectAllLibri, selectLibriStatus, selectLibriError, fetchLibri } from "../redux/features/wishlistSlice";
+import { selectAllLibri, selectLibriStatus, fetchLibri } from "../redux/features/wishlistSlice";
 
 import BookList from "../components/bookList/bookList";
 
@@ -11,7 +11,6 @@ export default function LibreriaPersonale() {
     
     const libri = useSelector(selectAllLibri);
     const libriStatus = useSelector(selectLibriStatus);
-    const libriError = useSelector(selectLibriError);
 
     React.useEffect(() => {
         if (libriStatus === "idle") {

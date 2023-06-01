@@ -2,7 +2,7 @@ import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { selectAllLibri, selectLibriStatus, selectLibriError, fetchLibri } from "../redux/features/wishlistSlice";
+import { selectAllLibri, selectLibriStatus, fetchLibri } from "../redux/features/wishlistSlice";
 
 import AddLibro from "./AddLibro";
 
@@ -19,7 +19,6 @@ export default function Wishlist() {
 
     const libri = useSelector(selectAllLibri);
     const libriStatus = useSelector(selectLibriStatus);
-    const libriError = useSelector(selectLibriError);
 
     React.useEffect(() => {
         if (libriStatus === "idle") {

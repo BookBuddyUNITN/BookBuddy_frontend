@@ -47,7 +47,7 @@ const Html5QrcodePlugin = (props) => {
                 console.error("Failed to clear html5QrcodeScanner. ", error);
             });
         };
-    }, []);
+    });
 
     return (
         <div className="w-[70%]"

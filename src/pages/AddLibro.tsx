@@ -21,7 +21,7 @@ export default function AddLibro() {
     const [ISBN, setISBN] = useState<string>("");
 
     const onNewScanResult = (decodedText: string, decodedResult: result) => {
-        if (decodedResult.result.format.formatName = "EAN_13") {
+        if (decodedResult.result.format.formatName === "EAN_13") {
             setISBN(decodedResult.result.text);
         }
     };

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { selectAllLibri, selectLibriError, selectLibriStatus, fetchLibri } from "../redux/features/libriSlice";
+import { selectAllLibri, selectLibriStatus, fetchLibri } from "../redux/features/libriSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
@@ -13,7 +13,6 @@ export default function Home() {
 
     const libri = useSelector(selectAllLibri);
     const libriStatus = useSelector(selectLibriStatus);
-    const libriError = useSelector(selectLibriError);
 
     useEffect(() => {
         if (libriStatus === "idle") {

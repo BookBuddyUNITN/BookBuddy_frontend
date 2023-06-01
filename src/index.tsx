@@ -27,7 +27,7 @@ root.render(
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Layout />}>
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/libreriapersonale" element={<LibreriaPersonale />} />
           <Route path="/libro/:id" element={<Libro />} />
 

@@ -22,7 +22,7 @@ function Layout() {
             console.log(err);
             setLogged(0);
         });
-    }, []);
+    });
 
     if (logged === 0) {
         return <Navigate to="/login" />;
