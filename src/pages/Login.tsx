@@ -16,7 +16,7 @@ async function login(username: string, password: string) {
     } catch (error) {
         console.log(error);
         return false;
-    } 
+    }
 }
 
 export default function Login() {
@@ -26,6 +26,17 @@ export default function Login() {
     const [password, setPassword] = React.useState<string>("");
 
     const navigate = useNavigate();
+
+    async function loginButton() {
+        const res = await login(username, password) as any;
+        if (res.success) {
+            console.log("Login success");
+            localStorage.setItem("token", res.data.token);
+            navigate("/home");
+        } else {
+            alert("Login failed");
+        }
+    }
 
     return (
         <div className="h-screen w-screen flex flex-col items-center justify-center">
@@ -44,17 +55,8 @@ export default function Login() {
                         onChange={(e) => setPassword(e.target.value)}
                         className="border-2 border-black rounded-md p-1" type="password" />
                     <button className="bg-black text-white rounded-md p-1 mt-2"
-                        onClick={async (e) => {
-                            e.preventDefault();
-                            const res = await login(username, password);
-                            if (res.success) {
-                                console.log("Login success");
-                                localStorage.setItem("token", res.data.token);
-                                navigate("/");
-                            } else {
-                                alert("Login failed");
-                            }
-                        }}
+                        type="button"
+                        onClick={loginButton}
                     >Login</button>
                 </form>
             </div>
