@@ -1,6 +1,6 @@
 import React from "react";
 
-import { selectAllLibri, selectLibriStatus, fetchLibri } from "../redux/features/libriSlice";
+import { selectAllLibri, selectLibriStatus, riceraLocale } from "../redux/features/ricercaSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
@@ -16,7 +16,13 @@ export default function Home() {
 
     useEffect(() => {
         if (libriStatus === "idle") {
-            dispatch<any>(fetchLibri());
+            dispatch<any>(riceraLocale(
+                {
+                    location: [0, 0],
+                    distanzaMassima: 100,
+                    searchString: ""
+                }
+            ));
         }
     }, [libriStatus, dispatch]);
 

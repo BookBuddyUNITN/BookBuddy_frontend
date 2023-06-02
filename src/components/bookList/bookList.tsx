@@ -19,6 +19,11 @@ export default function BookList({ libri, stato }: LibriListInterface) {
         content.push(<div key="error" >error</div>)
     }
     else if (stato === "succeeded") {
+        if(libri.length === 0) {
+            content.push(<div className="w-full h-full relative" key="No_books_found" >
+                <h1 className="text-2xl font-bold absolute top-[30%] left-[50%] translate-x-[-50%]">No books found</h1>
+            </div>)
+        }
         libri.map((libri: any) => (
             content.push(
                 <Link key={libri._id} className="card" to={`/libro/${libri._id}`} >
@@ -37,7 +42,7 @@ export default function BookList({ libri, stato }: LibriListInterface) {
 
 
     return (
-        <div className="cardContainer">
+        <div className="cardContainer w-full h-full">
             {content}
         </div>
     )

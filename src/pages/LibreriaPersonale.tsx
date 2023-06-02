@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { selectAllLibri, selectLibriStatus, fetchLibri } from "../redux/features/wishlistSlice";
+import { selectAllLibri, selectLibriStatus, fetchLibri } from "../redux/features/libriSlice";
 
 import BookList from "../components/bookList/bookList";
 

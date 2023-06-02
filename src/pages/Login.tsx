@@ -32,7 +32,7 @@ export default function Login() {
         if (res.success) {
             console.log("Login success");
             localStorage.setItem("token", res.data.token);
-            navigate("/home");
+            navigate("/");
         } else {
             alert("Login failed");
         }

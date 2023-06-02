@@ -2,7 +2,7 @@ import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { selectAllLibri, selectLibriStatus, fetchLibri } from "../redux/features/wishlistSlice";
+import { selectAllLibri, selectFetchLibriStatus, fetchLibri } from "../redux/features/wishlistSlice";
 
 import AddLibro from "./AddLibro";
 
@@ -18,7 +18,7 @@ export default function Wishlist() {
     const dispatch = useDispatch();
 
     const libri = useSelector(selectAllLibri);
-    const libriStatus = useSelector(selectLibriStatus);
+    const libriStatus = useSelector(selectFetchLibriStatus);
 
     React.useEffect(() => {
         if (libriStatus === "idle") {
@@ -41,7 +41,7 @@ export default function Wishlist() {
                     <h1 className="text-2xl font-bold">Wishlist</h1>
                     <img className="w-8 h-8" src={plus_button} alt="add button" onClick={handleOpenPopup} />
                 </div>
-                <div>
+                <div className="flex-1">
                     <BookList stato={libriStatus} libri={libri} />
                 </div>
             </div>

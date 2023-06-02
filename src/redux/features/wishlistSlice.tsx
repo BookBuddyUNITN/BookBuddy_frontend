@@ -7,7 +7,10 @@ const LIBRI_API_URL = conf.BASE_URL + "wishlist";
 
 const intialState = {
     libri: [],
-    status: "idle", //'idle' | 'loading' | 'succeeded' | 'failed'
+    status: {
+        fetchLibri: "idle",
+        addLibro: "idle",
+    }, //'idle' | 'loading' | 'succeeded' | 'failed'
     error: "",
 };
 
@@ -17,21 +20,22 @@ export const fetchLibri = createAsyncThunk("wishlist/fetchWishlist", async () =>
             "x-access-token": localStorage.getItem("token")
         }
     }
-    const response = await axios.get(LIBRI_API_URL + "/list?idUtente=1", config);
+    const response = await axios.get(LIBRI_API_URL + "/list", config);
     return response.data;
 });
 
-// export const addLibro = createAsyncThunk("wishlist/addLibro", async (ISBN : string) => {
-//     const config = {
-//         headers: {
-//             "x-access-token": localStorage.getItem("token")
-//         }
-//     }
-//     const response = await axios.post(LIBRI_API_URL + "/add", {
-//         ISBN: ISBN
-//     }, config);
-//     return response.data;
-// });
+export const addLibro = createAsyncThunk("wishlist/addLibro", async (ISBN : string) => {
+    const config = {
+        headers: {
+            "x-access-token": localStorage.getItem("token")
+        }
+    }
+    const response = await axios.put(LIBRI_API_URL + "/add", {
+        isbn: ISBN
+    }, config);
+    console.log(response.data)
+    return response.data;
+});
 
 const wishlistSlice = createSlice({
     name: "wishlist",
@@ -40,15 +44,26 @@ const wishlistSlice = createSlice({
     extraReducers(builder) {
         builder
             .addCase(fetchLibri.pending, (state, action) => {
-                state.status = "loading";
+                state.status.fetchLibri = "loading";
             })
             .addCase(fetchLibri.fulfilled, (state, action) => {
-                state.status = "succeeded";
+                state.status.fetchLibri = "succeeded";
                 if(action.payload.data.libri)
                     state.libri = state.libri.concat(action.payload.data.libri);
             })
             .addCase(fetchLibri.rejected, (state, action) => {
-                state.status = "failed";
+                state.status.fetchLibri = "failed";
+                state.error = action.error.message ? action.error.message : "error";
+            })
+            .addCase(addLibro.pending, (state, action) => {
+                state.status.addLibro = "loading";
+            })
+            .addCase(addLibro.fulfilled, (state, action) => {
+                state.status.addLibro = "succeeded";
+                state.libri = state.libri.concat(action.payload.data);
+            })
+            .addCase(addLibro.rejected, (state, action) => {
+                state.status.addLibro = "failed";
                 state.error = action.error.message ? action.error.message : "error";
             })
     }
@@ -59,7 +74,9 @@ export const selectLibLriById = ((state: any, libriId: string) => {
     return state.wishlist.libri.find((libri: any) => libri._id === libriId
     )
 });
-export const selectLibriStatus = (state: any) => state.wishlist.status;
+export const selectFetchLibriStatus = (state: any) => state.wishlist.status.fetchLibri;
+export const selectAddLibroStatus = (state: any) => state.wishlist.status.addLibro;
+
 export const selectLibriError = (state: any) => state.wishlist.error;
 
 export default wishlistSlice.reducer;
