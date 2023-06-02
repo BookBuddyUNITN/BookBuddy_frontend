@@ -48,8 +48,8 @@ const wishlistSlice = createSlice({
             })
             .addCase(fetchLibri.fulfilled, (state, action) => {
                 state.status.fetchLibri = "succeeded";
-                if(action.payload.data.libri)
-                    state.libri = state.libri.concat(action.payload.data.libri);
+                if(action.payload.data.wishlist)
+                    state.libri = state.libri.concat(action.payload.data.wishlist);
             })
             .addCase(fetchLibri.rejected, (state, action) => {
                 state.status.fetchLibri = "failed";
@@ -60,7 +60,7 @@ const wishlistSlice = createSlice({
             })
             .addCase(addLibro.fulfilled, (state, action) => {
                 state.status.addLibro = "succeeded";
-                state.libri = state.libri.concat(action.payload.data);
+                state.libri = state.libri.concat(action.payload.data.libro);
             })
             .addCase(addLibro.rejected, (state, action) => {
                 state.status.addLibro = "failed";
