@@ -8,11 +8,8 @@
     transition: 0.3s;
 
     width: 90%;
+    height: 150px;
     margin-top: 10px;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
 
     cursor: pointer;
 
@@ -20,6 +17,20 @@
 
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.iconButton {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0);
+    transition: 0.3s;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 9999;
+}
+
+.iconButton:hover {
+    border-radius: 50%;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .lds-dual-ring {

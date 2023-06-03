@@ -10,8 +10,17 @@ const intialState = {
     status: {
         fetchLibri: "idle",
         addLibro: "idle",
+        removeLibro: "idle",
     }, //'idle' | 'loading' | 'succeeded' | 'failed'
     error: "",
+} as {
+    libri: any[],
+    status: {
+        fetchLibri: string,
+        addLibro: string,
+        removeLibro: string,
+    },
+    error: string,
 };
 
 export const fetchLibri = createAsyncThunk("wishlist/fetchWishlist", async () => {
@@ -33,7 +42,17 @@ export const addLibro = createAsyncThunk("wishlist/addLibro", async (ISBN : stri
     const response = await axios.put(LIBRI_API_URL + "/add", {
         isbn: ISBN
     }, config);
-    console.log(response.data)
+    return response.data;
+});
+
+export const removeLibro = createAsyncThunk("wishlist/removeLibro", async (ISBN : string) => {
+    const config = {
+        headers: {
+            "x-access-token": localStorage.getItem("token")
+        }
+    }
+    const response = await axios.delete(LIBRI_API_URL + "/delete?isbn=" + ISBN, config);
+    console.log(response.data);
     return response.data;
 });
 
@@ -66,6 +85,17 @@ const wishlistSlice = createSlice({
                 state.status.addLibro = "failed";
                 state.error = action.error.message ? action.error.message : "error";
             })
+            .addCase(removeLibro.pending, (state, action) => {
+                state.status.removeLibro = "loading";
+            })
+            .addCase(removeLibro.fulfilled, (state, action) => {
+                state.status.removeLibro = "succeeded";
+                state.libri = state.libri.filter((libro) => libro.ISBN !== action.payload.data.isbn);
+            })
+            .addCase(removeLibro.rejected, (state, action) => {
+                state.status.removeLibro = "failed";
+                state.error = action.error.message ? action.error.message : "error";
+            })
     }
 })
 
@@ -76,6 +106,7 @@ export const selectLibLriById = ((state: any, libriId: string) => {
 });
 export const selectFetchLibriStatus = (state: any) => state.wishlist.status.fetchLibri;
 export const selectAddLibroStatus = (state: any) => state.wishlist.status.addLibro;
+export const selectRemoveLibroStatus = (state: any) => state.wishlist.status.removeLibro;
 
 export const selectLibriError = (state: any) => state.wishlist.error;
 

@@ -20,7 +20,7 @@ export default function LibreriaPersonale() {
 
     return (
         <div>
-            <BookList stato={libriStatus} libri={libri} />
+            <BookList stato={libriStatus} libri={libri} removeLibro={null} removeStatus="" />
         </div>
     )
 }

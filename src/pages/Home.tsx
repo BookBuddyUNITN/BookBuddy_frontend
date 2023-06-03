@@ -31,7 +31,7 @@ export default function Home() {
             <div className="sticky top-0">
                 <SearchBar />
             </div>
-            <BookList libri={libri} stato={libriStatus} />
+            <BookList libri={libri} stato={libriStatus} removeLibro={null} removeStatus="" />
         </>
     )
 }
