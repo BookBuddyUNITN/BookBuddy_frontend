@@ -20,7 +20,7 @@ export default function BookList({ libri, stato, removeLibro, removeStatus }: Li
         content.push(<div key="loading" className="lds-dual-ring"></div>)
     }
     else if (stato === "failed" || removeStatus === "failed") {
-        if(removeStatus === "failed")
+        if (removeStatus === "failed")
             content.push(<div key="error" >remove error</div>)
         else
             content.push(<div key="error" >error</div>)
@@ -34,11 +34,9 @@ export default function BookList({ libri, stato, removeLibro, removeStatus }: Li
         libri.map((libro: any) => (
             content.push(
                 <Link key={libro._id} className="card z-0" to={`/libro/${libro._id}`} >
-                    <div className="flex flex-row justify-between">
-                        <div className="flex flex-row align-top flex-1">
-                            <div className="mr-2">
-                                <img src={"https://covers.openlibrary.org/b/isbn/" + libro.ISBN + "-M.jpg"} alt="book cover" className="h-[150px]" />
-                            </div>
+                    <div className="flex flex-row justify-between h-[100%]">
+                        <div className="flex flex-row items-center flex-1">
+                            <img src={"https://covers.openlibrary.org/b/isbn/" + libro.ISBN + "-M.jpg"} alt="book cover" className="w-[110px] max-h-[150px] mr-2" />
                             <div className="flex-1">
                                 <h3>{libro.titolo}</h3>
                                 <p>{libro.autore}</p>
