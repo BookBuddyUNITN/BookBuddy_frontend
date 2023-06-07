@@ -8,7 +8,8 @@ const RECENSIONI_API_URL = conf.BASE_URL + "recensioni";
 interface reviewInterface {
     isbn: string,
     voto: number,
-    testo: string
+    testo: string,
+    
 }
 
 const intialState = {
@@ -34,7 +35,6 @@ export const leaveReview = createAsyncThunk("libri/leaveReview", async (data: re
         }
     }
     const response = await axios.post(RECENSIONI_API_URL + "/libri", data, config);
-    console.log(response.data);
     return response.data;
 });
 

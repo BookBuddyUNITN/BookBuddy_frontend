@@ -31,7 +31,7 @@ function Layout() {
     } else {
         return (
             <div className="h-[100svh] relative">
-                <div className="w-screen h-[calc(100svh-60px)] overflow-scroll absolute top-0">
+                <div className="w-screen h-[calc(100svh-65px)] overflow-scroll absolute top-0">
                     <Outlet />
                 </div>
                 <div className="h-[60px] absolute bottom-0 bg-white z-10">
