@@ -13,9 +13,6 @@ export default function NavBar() {
             <div className="text-2xl font-bold">
                 <Link to="/wishlist">Wishlist</Link>
             </div>
-            <div className="text-2xl font-bold">
-                <Link to="/TEST">TEST</Link>
-            </div>
         </div>
     )
 }

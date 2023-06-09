@@ -52,7 +52,7 @@ export default function Wishlist() {
                     <BookList stato={libriStatus} libri={libri} removeLibro={handleRemoveLibro} removeStatus={removeStatus} />
                 </div>
             </div>
-            {isPopupOpen && <Popup onClose={handleClosePopup} >
+            {isPopupOpen && <Popup onClose={handleClosePopup} destination="wishlist">
                     <AddLibro />
                 </Popup>}
         </div>

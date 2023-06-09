@@ -36,7 +36,7 @@ export default function Libro() {
         const stars = rating(libro.recensioni) as number;
         return (
             <>
-                <div className="flex flex-col h-[90%] border-2 border-black m-[10px] p-3">
+                <div className="flex flex-col h-[90%] m-[10px] p-3">
                     <div className="flex h-[400px] flex-row m-3 justify-evenly">
                         <div className="flex-1">
                             <img className="w-[100%] h-[100%] object-contain" src={"https://covers.openlibrary.org/b/isbn/" + libro.ISBN + "-M.jpg"} alt="book cover" />
@@ -57,7 +57,7 @@ export default function Libro() {
                     </div>
                     <div className="w-[100%] mt-[30px] mb-[30px]"></div>
                     <div className="flex flex-row">
-                        <div className="border-2 border-black rounded-md p-4 flex flex-col overflow-hidden w-[100%]">
+                        <div className="p-4 flex flex-col overflow-hidden w-[100%]">
                             <div>
                                 <h1 className="font-bold text-[2rem]">Reviews</h1>
                                 <div className="w-[100%]">

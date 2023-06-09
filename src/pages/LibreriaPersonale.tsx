@@ -1,26 +1,63 @@
 import React from "react";
+import { useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { selectAllLibri, selectLibriStatus, fetchLibri } from "../redux/features/libriSlice";
+import { selectAllLibri, selectFetchLibriStatus, fetchLibri, removeLibro, selectRemoveLibroStatus } from "../redux/features/libreriaPersonaleSlice";
+
+import AddCopiaLibro from "./AddCopiaLibro";
 
 import BookList from "../components/bookList/bookList";
 
+import plus_button from "../assets/img/plus_button.png";
+import Popup from "../components/popUpPage/popUpPage";
+
 export default function LibreriaPersonale() {
 
-    const dispatch = useDispatch();
-    
-    const libri = useSelector(selectAllLibri);
-    const libriStatus = useSelector(selectLibriStatus);
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
 
+    const dispatch = useDispatch();
+
+    const libri = useSelector(selectAllLibri);
+    const libriStatus = useSelector(selectFetchLibriStatus);
+
+    const removeStatus = useSelector(selectRemoveLibroStatus);
+
+    const handleRemoveLibro = (ISBN: string) => {
+        dispatch<any>(removeLibro(ISBN));
+    };
+
+    
     React.useEffect(() => {
         if (libriStatus === "idle") {
             dispatch<any>(fetchLibri());
         }
     }, [libriStatus, dispatch]);
 
+    const handleOpenPopup = () => {
+        setIsPopupOpen(true);
+    };
+
+    const handleClosePopup = () => {
+        setIsPopupOpen(false);
+    };
+
+    console.log(libri);
+
     return (
-        <div>
-            <BookList stato={libriStatus} libri={libri} removeLibro={null} removeStatus="" />
+        <div className="w-full h-full relative">
+            <div className="h-full w-full flex flex-col p-[3%] absolute top-0 left-0">
+                <div className="w-full flex flex-row justify-between">
+                    <h1 className="text-2xl font-bold">Library</h1>
+                    <img className="w-8 h-8" src={plus_button} alt="add button" onClick={handleOpenPopup} />
+                </div>
+                <div className="flex-1">
+                    <BookList stato={libriStatus} libri={libri} removeLibro={handleRemoveLibro} removeStatus={removeStatus} />
+                </div>
+            </div>
+            {isPopupOpen && <Popup onClose={handleClosePopup} destination="library" >
+                    <AddCopiaLibro />
+                </Popup>}
         </div>
+
     )
 }
