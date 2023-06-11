@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/BookBuddy_frontend/static/css/main.a03e8aca.css",
-    "main.js": "/BookBuddy_frontend/static/js/main.187bb269.js",
+    "main.js": "/BookBuddy_frontend/static/js/main.25cbefa6.js",
     "static/media/scritta.png": "/BookBuddy_frontend/static/media/scritta.09519b3a483978516319.png",
     "static/media/logo.png": "/BookBuddy_frontend/static/media/logo.1cfb0896168cb3ffb2f1.png",
     "static/media/recycle-bin.png": "/BookBuddy_frontend/static/media/recycle-bin.21d626b7dbd81c68db70.png",
     "index.html": "/BookBuddy_frontend/index.html",
     "main.a03e8aca.css.map": "/BookBuddy_frontend/static/css/main.a03e8aca.css.map",
-    "main.187bb269.js.map": "/BookBuddy_frontend/static/js/main.187bb269.js.map"
+    "main.25cbefa6.js.map": "/BookBuddy_frontend/static/js/main.25cbefa6.js.map"
   },
   "entrypoints": [
     "static/css/main.a03e8aca.css",
-    "static/js/main.187bb269.js"
+    "static/js/main.25cbefa6.js"
   ]
 }
