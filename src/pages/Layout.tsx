@@ -13,6 +13,7 @@ function Layout() {
 
     useEffect(() => {
         validateToken(token as string).then((res) => {
+            console.log(res);
             if (!res) {
                 setLogged(0);
             } else {

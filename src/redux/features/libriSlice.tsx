@@ -34,7 +34,7 @@ export const leaveReview = createAsyncThunk("libri/leaveReview", async (data: re
             "x-access-token": localStorage.getItem("token")
         }
     }
-    const response = await axios.post(RECENSIONI_API_URL + "/libri", data, config);
+    const response = await axios.post(RECENSIONI_API_URL + "/post", data, config);
     return response.data;
 });
 
